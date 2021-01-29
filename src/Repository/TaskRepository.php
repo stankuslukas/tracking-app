@@ -24,6 +24,7 @@ class TaskRepository extends ServiceEntityRepository
     public function findAllPaginated($page, $id){
         $dbquery =  $this->createQueryBuilder('v')
             ->where('v.UserTask = :userId')
+            ->orderBy('v.date', 'DESC')
             ->setParameter('userId', $id)
         ->getQuery();
 

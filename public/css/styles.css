@@ -20,6 +20,22 @@ a {
   color: #7c580d;
 }
 
+label{
+  margin-top: 10px;
+}
+
+.my-bg label{
+  color: black;
+}
+
+.my-bg-full label{
+  color: white;
+}
+
+button[type=submit] {
+  margin-top: 10px;
+}
+
 /* Style the list items */
 #tasks li {
   cursor: pointer;

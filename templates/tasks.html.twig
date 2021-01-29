@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="my-bg">
+        <div class="container">
+            <h2>Available options</h2>
+
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#add-task" aria-expanded="false" aria-controls="add-task">
+                Add new task
+            </button>
+
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#generate-report" aria-expanded="false" aria-controls="generate-report">
+                Generate report
+            </button>
+
+            <div class="row mt-5">
+
+                <div class="collapse mx-auto show" id="add-task">
+                    <div class="card card-body">
+                        {{ form(formTask) }}
+                    </div>
+                </div>
+
+                <div class="collapse mx-auto" id="generate-report">
+                    <div class="card card-body">
+                        {{ form(formReport) }}
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <ul id="tasks">
+        {% for task in tasks %}
+            <li>
+                <span class="task-list-item">{{ task.title }} {% if task.comment %}(comment: {{ task.comment }}){% endif %} <b>added on {{ task.date.date | date("m/d/Y") }}</b></span><span class="date">the duration of {{ task.timeSpent }} mins</span>
+            </li>
+        {% endfor %}
+    </ul>
+
+    {{ knp_pagination_render(tasks) }}
+
+{% endblock %}
